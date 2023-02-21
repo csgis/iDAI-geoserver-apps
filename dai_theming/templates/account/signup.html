@@ -1,0 +1,20 @@
+{% extends "account/base.html" %}
+
+{% load i18n %}
+{% load bootstrap_tags %}
+
+{% block title %}{% trans "Sign up" %}{% endblock %}
+
+{% block body_outer %}
+    <div class="page-header">
+        <h2>{% trans "Sign up" %}</h2>
+    </div>
+        <div class="row">
+            <div class="col-md-12">
+              <p class="lead">Registration is currently closed. <br><br> DAI employees can log in to the system with their DAI account. <br>External persons who require access can contact geonode-admin [*at-sign*] dainst.org.</p>
+            </div>
+        </div>
+{% endblock %}
+
+{% block extra_script %}
+{% endblock %}

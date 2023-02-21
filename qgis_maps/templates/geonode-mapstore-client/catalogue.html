@@ -1,0 +1,6 @@
+{% extends "geonode-mapstore-client/catalogue.html" %}
+
+{% block scripts %}
+    {{ block.super }}
+    {% include "qgis_maps/qgis_map_button.html" %}
+{% endblock %}
