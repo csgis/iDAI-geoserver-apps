@@ -37,12 +37,17 @@ def check_user_perms_on_resource(request, resource_id: int = None, folder_name: 
 
 
 
-def serve_static_file(request, path: str):
+def serve_static_file(request, sub_dir, path: str):
     # check if user can view base resource
-    check_user_perms_on_resource(request, folder_name=path)
+    full_path = f"{sub_dir}/{path}"
+    check_user_perms_on_resource(request, folder_name=full_path)
+
 
     pages_dir = os.path.join(settings.MEDIA_ROOT, "pages")
+    if sub_dir:
+        pages_dir = os.path.join(pages_dir, sub_dir)
     fullpath = os.path.join(pages_dir, path)
+    print(request)
     print(fullpath)
 
     # Get the content type based on the file extension
