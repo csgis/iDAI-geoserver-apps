@@ -6,7 +6,8 @@ class CheckUserMiddleware:
         self.get_response = get_response
 
     def __call__(self, request):
-        if '/groups/' in request.path and not request.user.is_authenticated:
+        if '/groups/' in request.path or '/people/' in request.path \
+                and not request.user.is_authenticated:
             return redirect('/account/login/')
         response = self.get_response(request)
         return response

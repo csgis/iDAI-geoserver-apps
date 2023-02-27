@@ -46,8 +46,6 @@ def serve_static_file(request, uuid, sub_dir="", filename=None):
     if sub_dir:
         pages_dir = os.path.join(pages_dir, sub_dir)
     fullpath = os.path.join(pages_dir, filename)
-    print(request)
-    print(fullpath)
 
     # Get the content type based on the file extension
     content_type, encoding = mimetypes.guess_type(fullpath)

@@ -32,8 +32,8 @@ def run_setup_hooks(*args, **kwargs):
 
     # Add middleware
     middleware = list(settings.MIDDLEWARE)
-    middleware = ["dai-gn-custom-apps.dai_theming.middleware.BlockSignupMiddleware",
-                  "dai-gn-custom-apps.dai_theming.middleware.CheckUserMiddleware"] \
-                 + middleware
+    middleware = ["dai-gn-custom-apps.dai_theming.middleware.BlockSignupMiddleware"] \
+                 + middleware \
+                 + ["dai-gn-custom-apps.dai_theming.middleware.CheckUserMiddleware"]
     settings.MIDDLEWARE = tuple(middleware)
 
