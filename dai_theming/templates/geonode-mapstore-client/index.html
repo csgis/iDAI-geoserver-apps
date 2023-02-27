@@ -1,0 +1,221 @@
+{% load static %}
+{% load client_version %}
+<!DOCTYPE html>
+<html class="msgapi">
+    <head>
+        <meta charset="UTF-8">
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- <link href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap" rel="stylesheet"> -->
+        <link href="{% static 'mapstore/dist/themes/geonode.css' %}?{% client_version %}" rel="stylesheet" />
+        <title>{{ SITE_NAME }}</title>
+        <link rel="shortcut icon" href="{% static 'geonode/img/favicon.ico' %}" />
+
+            <style>
+                /* montserrat-300 - latin */
+            @font-face {
+            font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 300;
+            src: url('{% static 'dai_theming/fonts/' %}montserrat-v25-latin-300.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+                url('{% static 'dai_theming/fonts/' %}montserrat-v25-latin-300.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+            }
+            /* montserrat-300italic - latin */
+            @font-face {
+            font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+            font-family: 'Montserrat';
+            font-style: italic;
+            font-weight: 300;
+            src: url('{% static 'dai_theming/fonts/' %}montserrat-v25-latin-300italic.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+                url('{% static 'dai_theming/fonts/' %}montserrat-v25-latin-300italic.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+            }
+            /* montserrat-regular - latin */
+            @font-face {
+            font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 400;
+            src: url('{% static 'dai_theming/fonts/' %}montserrat-v25-latin-regular.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+                url('{% static 'dai_theming/fonts/' %}montserrat-v25-latin-regular.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+            }
+            /* montserrat-italic - latin */
+            @font-face {
+            font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+            font-family: 'Montserrat';
+            font-style: italic;
+            font-weight: 400;
+            src: url('{% static 'dai_theming/fonts/' %}montserrat-v25-latin-italic.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+                url('{% static 'dai_theming/fonts/' %}montserrat-v25-latin-italic.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+            }
+            /* montserrat-700 - latin */
+            @font-face {
+            font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+            font-family: 'Montserrat';
+            font-style: normal;
+            font-weight: 700;
+            src: url('{% static 'dai_theming/fonts/' %}montserrat-v25-latin-700.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+                url('{% static 'dai_theming/fonts/' %}montserrat-v25-latin-700.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+            }
+            /* montserrat-700italic - latin */
+            @font-face {
+            font-display: swap; /* Check https://developer.mozilla.org/en-US/docs/Web/CSS/@font-face/font-display for other options. */
+            font-family: 'Montserrat';
+            font-style: italic;
+            font-weight: 700;
+            src: url('{% static 'dai_theming/fonts/' %}montserrat-v25-latin-700italic.woff2') format('woff2'), /* Chrome 36+, Opera 23+, Firefox 39+ */
+                url('{% static 'dai_theming/fonts/' %}montserrat-v25-latin-700italic.woff') format('woff'); /* Chrome 5+, Firefox 3.6+, IE 9+, Safari 5.1+ */
+            }
+            </style>
+
+        {% include './geonode-mapstore-client/snippets/loader_style.html' %}
+
+        {% block custom_theme %}
+            {% include './geonode-mapstore-client/snippets/custom_theme.html' %}
+        {% endblock %}
+
+        {% block extra_style %}
+        {% endblock %}
+
+        {% block extra_head %}
+        {% endblock %}
+    </head>
+    <body class="msgapi ms2" data-ms2-container="ms2">
+        <div class="gn-page-wrapper {% if request.user_agent.is_mobile %}gn-mobile{% else %}gn-desktop{% endif %}">
+            <div class="gn-theme gn-homepage">
+                {% include './geonode-mapstore-client/_geonode_config.html' %}
+                {% block header %}
+                    {% include './geonode-mapstore-client/snippets/header.html' with show_hero=True %}
+                {% endblock %}
+
+                {% block content %}
+                    {% comment %}
+                    <!-- example of content extension -->
+                    <div class="gn-container">
+                        <div class="gn-content">
+                            <!-- My custom content -->
+                        </div>
+                    </div>
+                    {% endcomment %}
+                    <div class="gn-container">
+                        <div id="gn-home-featured-resources-grid"></div>
+                        <div id="gn-home-resources-grid"></div>
+                    </div>
+                {% endblock %}
+
+                {% block container %}
+                    <div id="ms-container">
+                        <div class="gn-main-event-container">
+                            <div class="gn-main-event-content">
+                                <div class="gn-main-loader"></div>
+                                <div class="gn-main-event-text"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <script>
+                        var IDaiCookieNotice = (function () {
+
+                        function setCookie() {
+
+                            var today = new Date();
+                            var expiry = new Date(today.getTime() + 30 * 24 * 3600 * 1000); // plus 30 days
+                            document.cookie = "idai-cookie-notice=1; path=/; expires=" + expiry.toGMTString();
+                        }
+
+                        function isCookieSet() {
+
+                            return document.cookie.indexOf("idai-cookie-notice=1") !== -1;
+                        }
+
+                        function dismiss() {
+
+                            var elem = document.getElementById('idai-cookie-notice');
+                            elem.parentNode.removeChild(elem);
+                            setCookie();
+                        }
+
+                        function create() {
+
+                            var userLang = navigator.language || navigator.userLanguage;
+
+                            if (userLang.startsWith("de")) {
+                                text = "Um unsere Webseite für Sie optimal zu gestalten und fortlaufend verbessern zu können, verwenden wir Cookies. Durch die weitere Nutzung der Webseite stimmen Sie der Verwendung von Cookies zu. Weitere Informationen zu Cookies erhalten Sie in unserer <a href='http://www.dainst.org/de/datenschutz' target='_blank'>Datenschutzerklärung<a>.";
+                                buttonLabel = "Akzeptieren";
+                            } else {
+                                text = "This website uses cookies to ensure the best possible experience. By continuing to use this website you are giving consent to cookies being used. For further information on cookies visit our <a href='http://www.dainst.org/en/datenschutz' target='_blank'>Privacy Policy</a>.";
+                                buttonLabel = "Got it!"
+                            }
+
+                            style = "background-color: #E6E2E2; bottom: 0; padding: 15px; position: fixed; z-index: 10000";
+                            html = "<div style='" + style + "' class='bg-info' id='idai-cookie-notice'>"
+                                + "<button id='cookieBtn' class='btn btn-primary' onclick='IDaiCookieNotice.dismiss()' style='float:right;'>" + buttonLabel + "</button>"
+                                + text
+                                + "</div>";
+
+                            document.write(html);
+                        }
+
+
+                        if (!isCookieSet()) {
+                            create();
+                        }
+
+                        return {
+                            dismiss: dismiss
+                        }
+
+                        })();
+                    </script>
+                    {% endblock %}
+
+                <script>
+                    window.addEventListener('mapstore:ready', function(event) {
+                        const msAPI = event.detail;
+                        msAPI.setPluginsConfig([
+                            {
+                                name: 'FeaturedResourcesGrid',
+                                cfg: {
+                                    targetSelector: '#gn-home-featured-resources-grid',
+                                    pagePath: '/catalogue/'
+                                }
+                            },
+                            {
+                                name: 'ResourcesGrid',
+                                cfg: {
+                                    targetSelector: '#gn-home-resources-grid',
+                                    containerSelector: '#gn-home-resources-grid',
+                                    pagination: false,
+                                    pagePath: '/catalogue/',
+                                    disableFilters: true,
+                                    disableDetailPanel: true,
+                                    enableGeoNodeCardsMenuItems: true
+                                }
+                            },
+                            { name: 'SaveAs', cfg: { closeOnSave: true } },
+                            { name: 'DeleteResource' },
+                            { name: 'DownloadResource' },
+                            { name: 'Notifications' }
+                        ]);
+                    });
+                </script>
+
+                {% block ms_scripts %}
+                    <script id="gn-script" src="{% static 'mapstore/dist/js/gn-components.js' %}?{% client_version %}"></script>
+                {% endblock %}
+
+                {% block footer %}
+                    {% include './geonode-mapstore-client/snippets/footer.html' %}
+                {% endblock %}
+
+                {% block scripts %}
+                    <script src="{% static "lib/js/jquery.min.js" %}"></script>
+                    <script src="{% static "lib/js/bootstrap.min.js" %}"></script>
+                    <script type="text/javascript">
+                        // enable dropdown functionalities
+                        $('.dropdown-toggle').dropdown();
+                    </script>
+                {% endblock %}
+            </div>
+        </div>
+    </body>
+</html>
