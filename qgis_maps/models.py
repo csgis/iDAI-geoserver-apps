@@ -6,7 +6,7 @@ from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from geonode.base.models import ResourceBase
-
+import re
 
 def get_pages_upload_path(instance, filename):
     """Returns the relative path to the pages directory."""
@@ -50,7 +50,17 @@ class QGIS_Maps(models.Model):
         # Save the full path to the extracted directory
         self.directory_path = extract_path
         self.folder_name = folder_name
+
+        # Update the paths in index.html
+        index_file_path = os.path.join(extract_path, 'index.html')
+        with open(index_file_path, 'r') as f:
+            content = f.read()
+        content = re.sub(r'<script src="\.\/(.*?)"><\/script>', f'<script src="/uploaded/pages/{folder_name}/\\1"></script>', content)
+        with open(index_file_path, 'w') as f:
+            f.write(content)
+
         super().save(*args, **kwargs)
+
 
     def delete(self, *args, **kwargs):
         ret = super(QGIS_Maps, self).delete(*args, **kwargs)
