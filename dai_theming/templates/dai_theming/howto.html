@@ -1,0 +1,134 @@
+{% extends "geonode_base.html" %}
+
+
+{% block body_outer %}
+<style>
+    .panel-heading {
+        background: #efefef!important;
+        padding: 1rem!important;
+        cursor: pointer;
+     }
+
+     .panel-heading:hover {
+        background: #ccc!important;
+     }
+
+     .panel-heading.attention {
+        #background: #ffc0c0 !important;
+     }
+
+     .panel-heading a {
+        font-weight: bolder
+     }
+
+     .panel-collapse{
+        padding: .5rem .5rem 1rem .5rem;
+     }
+     .panel-body{
+        border-top: none!important;
+      }
+
+</style>
+
+    <div class="page-header">
+        <h2>How To</h2>
+    </div>
+        <div class="row">
+            <div class="col-md-12">
+              <p class="lead">
+                  This document is intended to help you get started using the platform.<br><br>
+              </p>
+
+                <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingOne">
+                      <h4 class="panel-title">
+                        <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                          What can I do here?
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
+                      <div class="panel-body">
+                          <p></p><b>geoserver.dainst.org ...</b></p>
+                        <ul class="list-unstyled" style="padding-left: 1rem">
+                          <li>... can be used as a data repository for geospatial data</li>
+                          <li>... allows users to upload, store, and manage spatial data in a variety of formats</li>
+                          <li>... provides a web-based interface for visualizing and querying data</li>
+                          <li>... can be used to create and serve maps, including tiled maps and vector data</li>
+                          <li>... supports a wide range of open geospatial standards and protocols, including OGC and WMS</li>
+                        </ul>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingTwo">
+                      <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                          Where do I learn to use the plattform?
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseTwo" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingTwo">
+                      <div class="panel-body">
+                        The software behind geoserver.dainst.org is called "GeoNode". The usage like uploading data, creating or styling maps is explained in the official documentation at:
+                          <a href="https://docs.geonode.org/en/master/usage/index.html" target="blank">https://docs.geonode.org/en/master/usage/index.html</a>
+                        <br><br>
+                          The most important sections are:
+                          <ul>
+                              <li><a href="https://docs.geonode.org/en/master/usage/index.html" target="blank">Data</a></li>
+                              <li><a href="https://docs.geonode.org/en/master/usage/managing_documents/index.html" target="blank">Managing Documents</a></li>
+                              <li><a href="https://docs.geonode.org/en/master/usage/managing_datasets/index.html" target="blank">Managing Datasets</a></li>
+                              <li><a href="https://docs.geonode.org/en/master/usage/managing_maps/index.html" target="blank">Managing Maps</a></li>
+
+
+                          </ul>
+
+                          <b>We ask you to read it before using the platform!</b>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="panel panel-default">
+                    <div class="panel-heading attention" role="tab" id="headingThree">
+                      <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                          ⚠️ Obligations when using the platform!
+                        </a>
+                      </h4>
+                    </div>
+                    <div id="collapseThree" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingThree">
+                      <div class="panel-body">
+                          <p>
+                        It is understood that you may not upload data or use it in any way that is harmful to the platform or others using it.
+                        </p>
+                          <p>
+                       Furthermore, you agree not to upload unnecessary data, that is, data that does not have a specific task or data that is insufficiently prepared in its structure.
+                         </p>
+                          <p>
+                       After each upload you are obliged to fill in the metadata. While many fields are optional, the last tab of the metadata wizard "DAI Metadata" must be filled in completely for each new record!
+
+                              This document explains how to edit the metadata
+                              <strong><a href="https://docs.geonode.org/en/master/usage/managing_datasets/dataset_metadata.html" target="_blank">Edit Metadata</a>.</strong>
+                          </p>
+                      </div>
+                    </div>
+                  </div>
+
+                </div>
+
+
+            </div>
+        </div>
+
+<script>
+    const outerDivs = document.querySelectorAll('.panel-default');
+
+    outerDivs.forEach(function(outerDiv) {
+      outerDiv.addEventListener('click', function(event) {
+        const targetLink = event.target.querySelector('a');
+        targetLink.click();
+      });
+    });
+</script>
+{% endblock %}

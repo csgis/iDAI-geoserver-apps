@@ -15,3 +15,25 @@ class DaiThemingConfig(AppConfig):
         signals_module = f"{self.name}.signals"
         __import__(signals_module)
 
+        run_setup_hooks()
+
+def run_setup_hooks(*args, **kwargs):
+    """
+    Run basic setup configuration for the custom_metadata app.
+    """
+
+    # Add custom URLs
+    from django.conf.urls import include, url
+    from geonode.urls import urlpatterns
+    urlpatterns.insert(
+        0,
+        url(f"", include(f"dai-gn-custom-apps.dai_theming.urls")),
+    )
+
+    # Add middleware
+    middleware = list(settings.MIDDLEWARE)
+    middleware = ["dai-gn-custom-apps.dai_theming.middleware.BlockSignupMiddleware",
+                  "dai-gn-custom-apps.dai_theming.middleware.CheckUserMiddleware"] \
+                 + middleware
+    settings.MIDDLEWARE = tuple(middleware)
+

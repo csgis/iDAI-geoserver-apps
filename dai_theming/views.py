@@ -1,3 +1,5 @@
 from django.shortcuts import render
 
-# Create your views here.
+def howto_view(request):
+    return render(request, 'dai_theming/howto.html')
+
