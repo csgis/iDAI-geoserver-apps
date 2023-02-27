@@ -1,4 +1,4 @@
-from django.http import Http404, FileResponse
+from django.http import Http404, FileResponse, HttpResponse
 from django.views.static import serve
 import os
 from django.shortcuts import redirect, get_object_or_404
@@ -8,6 +8,8 @@ from geonode.base.models import ResourceBase
 import re
 from django.http import Http404, HttpResponse, HttpResponseForbidden
 from django.core.exceptions import PermissionDenied
+from django.conf import settings
+import mimetypes
 
 def check_user_perms_on_resource(request, resource_id: int = None, folder_name: str = None):
     qgis_map = None
@@ -36,16 +38,27 @@ def check_user_perms_on_resource(request, resource_id: int = None, folder_name: 
 
 
 def serve_static_file(request, path: str):
-
     # check if user can view base resource
     check_user_perms_on_resource(request, folder_name=path)
 
-    app_dir = os.path.dirname(os.path.realpath(__file__))
-    pages_dir = os.path.join(app_dir, "pages")
+    pages_dir = os.path.join(settings.MEDIA_ROOT, "pages")
+    fullpath = os.path.join(pages_dir, path)
+    print(fullpath)
+
+    # Get the content type based on the file extension
+    content_type, encoding = mimetypes.guess_type(fullpath)
+
+    # Set the content type header explicitly for CSS files
+    if content_type == 'text/css':
+        content_type = 'text/css; charset=utf-8'
+
     try:
-        return serve(request, path, document_root=pages_dir)
-    except:
+        with open(fullpath, 'rb') as f:
+            response = HttpResponse(f.read(), content_type=content_type)
+            return response
+    except FileNotFoundError:
         raise Http404("File not found")
+
 
 
 def render_button(request, resource_id: int):
