@@ -37,16 +37,15 @@ def check_user_perms_on_resource(request, resource_id: int = None, folder_name: 
 
 
 
-def serve_static_file(request, sub_dir, path: str):
+def serve_static_file(request, uuid, sub_dir="", filename=None):
     # check if user can view base resource
-    full_path = f"{sub_dir}/{path}"
-    check_user_perms_on_resource(request, folder_name=full_path)
+    check_user_perms_on_resource(request, folder_name=uuid)
 
 
-    pages_dir = os.path.join(settings.MEDIA_ROOT, "pages")
+    pages_dir = os.path.join(settings.MEDIA_ROOT, "pages", uuid )
     if sub_dir:
         pages_dir = os.path.join(pages_dir, sub_dir)
-    fullpath = os.path.join(pages_dir, path)
+    fullpath = os.path.join(pages_dir, filename)
     print(request)
     print(fullpath)
 
