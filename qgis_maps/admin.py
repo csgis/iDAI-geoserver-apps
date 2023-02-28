@@ -6,7 +6,6 @@ class QGISMapsAdmin(admin.ModelAdmin):
     ordering = ('-created_at',)
     search_fields = ['resource__title', 'title']
 
-
     def resource_id(self, obj):
         return obj.resource.id
     resource_id.short_description = 'Resource ID'
@@ -14,5 +13,10 @@ class QGISMapsAdmin(admin.ModelAdmin):
     def delete_queryset(self, request, queryset):
         for obj in queryset:
             obj.delete()
+
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == "resource":
+            kwargs["queryset"] = ResourceBase.objects.order_by('title')
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
 
 admin.site.register(QGIS_Maps, QGISMapsAdmin)
