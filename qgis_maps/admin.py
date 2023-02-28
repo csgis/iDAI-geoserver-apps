@@ -1,5 +1,7 @@
 from django.contrib import admin
 from .models import QGIS_Maps
+from geonode.base.models import ResourceBase
+
 
 class QGISMapsAdmin(admin.ModelAdmin):
     list_display = ('title', 'resource', 'directory_path', 'zip_file', 'created_at', 'resource_id')
