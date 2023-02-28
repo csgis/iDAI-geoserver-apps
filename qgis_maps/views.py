@@ -71,7 +71,7 @@ def render_button(request, resource_id: int):
         btn = f"""
             <li>
                 <a class="nav-link btn btn-secondary btn-sm"
-                style="background-color: white;" target="_blank"
+                style="background-color: yellow; color: #333;" target="_blank"
                 href="/qgis-maps/{hash}/index.html">
                 <span>3D VIEW</span>
                 </a>
