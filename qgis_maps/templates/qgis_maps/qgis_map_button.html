@@ -24,9 +24,13 @@
 
     function extractDatasetIdFromUrl() {
       const url = window.location.href;
-      const match = url.match(/#\/dataset\/(\d+)/);
-      if (match) {
-        return match[1];
+      const matchDataset = url.match(/#\/dataset\/(\d+)/);
+      if (matchDataset) {
+        return matchDataset[1];
+      }
+      const matchMap = url.match(/#\/map\/(\d+)/);
+      if (matchMap) {
+        return matchMap[1];
       }
       return null;
     }

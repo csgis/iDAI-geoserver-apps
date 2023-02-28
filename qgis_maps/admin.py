@@ -18,7 +18,8 @@ class QGISMapsAdmin(admin.ModelAdmin):
 
     def formfield_for_foreignkey(self, db_field, request, **kwargs):
         if db_field.name == "resource":
-            kwargs["queryset"] = ResourceBase.objects.order_by('title')
+            kwargs["queryset"] = ResourceBase.objects.filter(resource_type__in=['dataset', 'map']).order_by('title')
         return super().formfield_for_foreignkey(db_field, request, **kwargs)
+
 
 admin.site.register(QGIS_Maps, QGISMapsAdmin)
