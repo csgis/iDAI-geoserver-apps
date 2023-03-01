@@ -58,7 +58,11 @@ class QGIS_Maps(models.Model):
         content = re.sub(r'<script src="\.\/(.*?)"><\/script>', f'<script src="/uploaded/pages/{folder_name}/\\1"></script>', content)
         content = content.replace('app.loadSceneFile("./data/Start/scene.js", function (scene) {', f'app.loadSceneFile("/uploaded/pages/{folder_name}/data/Start/scene.js", function (scene) {{')
         content = content.replace('<script type="text/javascript" src="js/',
-                                  f'<script type="text/javascript" src="/uploaded/pages/{folder_name}/')
+                                  f'<script type="text/javascript" src="/uploaded/pages/{folder_name}/js/')
+        content = content.replace('"models/',
+                                  f'"/uploaded/pages/{folder_name}/models/')
+
+
         with open(index_file_path, 'w') as f:
             f.write(content)
 
