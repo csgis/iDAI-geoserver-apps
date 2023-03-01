@@ -61,7 +61,8 @@ class QGIS_Maps(models.Model):
                                   f'<script type="text/javascript" src="/uploaded/pages/{folder_name}/js/')
         content = content.replace('"models/',
                                   f'"/uploaded/pages/{folder_name}/models/')
-
+        content = content.replace('"skins/',
+                                  f'"/uploaded/pages/{folder_name}/skins/')
 
         with open(index_file_path, 'w') as f:
             f.write(content)
