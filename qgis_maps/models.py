@@ -55,14 +55,14 @@ class QGIS_Maps(models.Model):
         index_file_path = os.path.join(extract_path, 'index.html')
         with open(index_file_path, 'r') as f:
             content = f.read()
-        content = re.sub(r'<script src="\.\/(.*?)"><\/script>', f'<script src="/uploaded/pages/{folder_name}/\\1"></script>', content)
-        content = content.replace('app.loadSceneFile("./data/Start/scene.js", function (scene) {', f'app.loadSceneFile("/uploaded/pages/{folder_name}/data/Start/scene.js", function (scene) {{')
-        content = content.replace('<script type="text/javascript" src="js/',
-                                  f'<script type="text/javascript" src="/uploaded/pages/{folder_name}/js/')
-        content = content.replace('"models/',
-                                  f'"/uploaded/pages/{folder_name}/models/')
-        content = content.replace('"skins/',
-                                  f'"/uploaded/pages/{folder_name}/skins/')
+        # content = re.sub(r'<script src="\.\/(.*?)"><\/script>', f'<script src="/uploaded/pages/{folder_name}/\\1"></script>', content)
+        # content = content.replace('app.loadSceneFile("./data/Start/scene.js", function (scene) {', f'app.loadSceneFile("/uploaded/pages/{folder_name}/data/Start/scene.js", function (scene) {{')
+        # content = content.replace('<script type="text/javascript" src="js/',
+        #                           f'<script type="text/javascript" src="/uploaded/pages/{folder_name}/js/')
+        # content = content.replace('"models/',
+        #                           f'"/uploaded/pages/{folder_name}/models/')
+        # content = content.replace('"skins/',
+        #                           f'"/uploaded/pages/{folder_name}/skins/')
 
         with open(index_file_path, 'w') as f:
             f.write(content)
