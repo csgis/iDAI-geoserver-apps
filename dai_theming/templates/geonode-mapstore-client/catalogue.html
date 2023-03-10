@@ -1,0 +1,9 @@
+{% extends "geonode-mapstore-client/catalogue.html" %}
+
+{% block scripts %}
+    {{ block.super }}
+    {% include "qgis_maps/qgis_map_button.html" %}
+    {% include "custom_metadata/extend_info_panel.html" %}
+{% endblock %}
+
+
