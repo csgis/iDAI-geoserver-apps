@@ -27,7 +27,7 @@ def run_setup_hooks(*args, **kwargs):
     from geonode.urls import urlpatterns
     urlpatterns.insert(
         0,
-        url(f"", include(f"dai-gn-custom-apps.dai_theming.urls")),
+        url(f"", include(f"dai_theming.urls")),
     )
 
     # Add middleware
