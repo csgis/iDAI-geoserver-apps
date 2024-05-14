@@ -1,0 +1,1 @@
+default_app_config = "daard_database.apps.DaardDatabaseConfig"

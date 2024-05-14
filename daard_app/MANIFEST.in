@@ -1,0 +1,4 @@
+include LICENSE
+include README.rst
+include daard_database/requirements.txt
+recursive-include daard_database/static *

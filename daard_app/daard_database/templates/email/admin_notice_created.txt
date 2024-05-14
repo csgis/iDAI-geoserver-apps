@@ -1,0 +1,3 @@
+The following new entry has been created: {{ instance.disease }}
+Please login to https://geoserver.dainst.org/admin/daard_database/diseasecase/{{instance.pk}}/change/
+for your review.

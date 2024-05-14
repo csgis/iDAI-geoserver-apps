@@ -1,0 +1,31 @@
+
+
+.mcheckbox-table td {
+  border: 1px solid #eee;
+}
+
+div.mcheckbox-container {
+    max-height: 180px;
+    min-width: 400px;
+    overflow-y: scroll;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+table.mcheckbox-table td {
+    padding: 10px!important;
+    background:#fff;
+}
+
+.first-check-col {
+    width: 330px;
+}
+
+.checkbox-row:hover{
+    cursor:pointer;
+}
+
+.checkbox-row:hover td{
+    background: #ccc;
+}
+

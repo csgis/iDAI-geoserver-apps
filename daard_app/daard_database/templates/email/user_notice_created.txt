@@ -1,0 +1,7 @@
+Thank you for your contribution!
+Your disease {{ instance.disease }} has been saved!
+We will review your entry and contact you in case of questions.
+
+Yours,
+
+DAI - Team DAARD
