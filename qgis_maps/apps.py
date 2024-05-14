@@ -4,7 +4,7 @@ import os
 
 class QgisMapsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
-    name = 'dai-gn-custom-apps.qgis_maps'
+    name = 'qgis_maps'
 
     def ready(self):
         # inject templates
@@ -23,5 +23,5 @@ def run_setup_hooks(*args, **kwargs):
     from geonode.urls import urlpatterns
     urlpatterns.insert(
         0,
-        url(f"^qgis-maps/", include(f"dai-gn-custom-apps.qgis_maps.urls")),
+        url(f"^qgis-maps/", include(f"qgis_maps.urls")),
     )
