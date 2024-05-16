@@ -1,0 +1,63 @@
+{
+    "fields": [
+        {
+            "type": "NumberField",
+            "name": "age",
+            "label": "Age",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "CharField",
+            "name": "planet",
+            "label": "Planet",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "DateField",
+            "name": "discovered_Data",
+            "label": "Discovered date",
+            "required": false,
+            "widget": "DatePicker"
+        },
+        {
+            "type": "RadioSelectField",
+            "name": "size_of_planet",
+            "label": "Size of planet",
+            "required": true,
+            "widget": "RadioSelect",
+            "choices": [
+                {"value":"small", "label":"Small"},
+                {"value":"medium", "label":"Medium"},
+                {"value":"large", "label":"Large"}
+            ]
+        },
+        {
+            "type": "BooleanField",
+            "name": "is_published",
+            "label": "Is published",
+            "required": false,
+            "widget": "CheckboxInput"
+        },
+        {
+            "type": "CharField",
+            "name": "percent_of_water",
+            "label": "Percent of water",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "ChoiceField",
+            "name": "relevance",
+            "label": "Relevance of planet",
+            "choices": [
+                {"value":"Food", "label":"Food"},
+                {"value":"Water", "label":"Water"},
+                {"value":"Fun", "label":"fun"}
+            ],
+            "required": false,
+            "widget": "Select"
+        }
+    ]
+}

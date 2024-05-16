@@ -1,0 +1,12 @@
+{
+  "de": {
+    "age": "Alter",
+    "size": "Größe",
+    "color": "Farbe"
+  },
+  "en": {
+    "age": "Age",
+    "size": "Size",
+    "color": "Color"
+  }
+}
