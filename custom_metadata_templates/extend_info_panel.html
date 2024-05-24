@@ -73,19 +73,30 @@ const translationMap = {% get_custom_metadata_translations %}
             endpoint: "/api/v2/geoapps/",
             property: "geoapp"
           }];
+          
           var open = XMLHttpRequest.prototype.open;
           XMLHttpRequest.prototype.open = function() {
+            var method = arguments[0];
             var url = arguments[1];
+            var endpoint = endpoints.find(e => url.includes(e.endpoint));
+            
+            if (endpoint && !url.includes("&include[]=metadata")) {
+              var separator = url.includes("?") ? "&" : "?";
+              url += separator + "include[]=metadata";
+              arguments[1] = url;
+            }
+            
             this.addEventListener("readystatechange", function() {
               if (this.readyState === XMLHttpRequest.DONE && this.status === 200) {
-                var endpoint = endpoints.find(e => url.includes(e.endpoint));
                 if (endpoint) {
-                  console.log("URL:", this.responseURL);
+                  console.log("Modified URL:", this.responseURL);
                   var responseJSON = JSON.parse(this.responseText);
                   window.extra_items = generateHTML(responseJSON[endpoint.property].metadata);
+                  console.log("Metadata:", responseJSON[endpoint.property].metadata);
                 }
               }
             });
+            
             open.apply(this, arguments);
           };
         })();
@@ -100,21 +111,34 @@ const translationMap = {% get_custom_metadata_translations %}
           }, 100);
         }
 
-          waitForElement(".btn-info", function(node) {
-            node.addEventListener("click", function() {
-              waitForElement(".gn-details-info-fields", function(node) {
-                if (window.extra_items !== false) {
-                  node.insertAdjacentHTML("beforeend", window.extra_items);
+        waitForElement(".gn-menu-list button .fa-database", function(iconNode) {
+          console.log("appending custom data");
+          var buttonNode = iconNode.closest("button");
+          buttonNode.addEventListener("click", function() {
+            waitForElement(".gn-details-info-fields", function(detailsNode) {
+              if (window.extra_items !== false) {
+                var lastItem = detailsNode.querySelector(".gn-details-info-row.link");
+                if (lastItem) {
+                  lastItem.insertAdjacentHTML("beforebegin", window.extra_items);
+                } else {
+                  detailsNode.insertAdjacentHTML("beforeend", window.extra_items);
                 }
-              });
+              }
             });
           });
+        });
 
-          waitForElement(".gn-details-info-fields", function(node) {
-            if (window.extra_items !== false) {
-              node.insertAdjacentHTML("beforeend", window.extra_items);
+        waitForElement(".gn-details-info-fields", function(detailsNode) {
+          if (window.extra_items !== false) {
+            var lastItem = detailsNode.querySelector(".gn-details-info-row.link");
+            if (lastItem) {
+              lastItem.insertAdjacentHTML("beforebegin", window.extra_items);
+            } else {
+              detailsNode.insertAdjacentHTML("beforeend", window.extra_items);
             }
-          });
+          }
+        });
+
 
 console.log("custom_metadata template loaded");
 </script>

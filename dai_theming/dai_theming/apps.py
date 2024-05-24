@@ -23,11 +23,11 @@ def run_setup_hooks(*args, **kwargs):
     """
 
     # Add custom URLs
-    from django.conf.urls import include, url
+    from django.urls import include, re_path
     from geonode.urls import urlpatterns
     urlpatterns.insert(
         0,
-        url(f"", include(f"dai_theming.urls")),
+        re_path(r"", include(f"dai_theming.urls")),
     )
 
     # Add middleware
@@ -36,4 +36,3 @@ def run_setup_hooks(*args, **kwargs):
                  + middleware \
                  + ["dai_theming.middleware.CheckUserMiddleware"]
     settings.MIDDLEWARE = tuple(middleware)
-

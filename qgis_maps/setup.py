@@ -9,10 +9,7 @@ setup(
     version='0.1',  # Increment with changes
     packages=find_packages(),  # Find all packages in this directory
     include_package_data=True,  # Include everything in MANIFEST.in if it exists
-    install_requires=[
-        'django>=3.0',  # Ensure correct Django version is installed
-        # List other dependencies if any
-    ],
+    install_requires=[],
     classifiers=[
         'Framework :: Django',
         'Programming Language :: Python :: 3',

@@ -22,7 +22,7 @@ def get_custom_metadata_translations():
         )
 
     try:
-        with open(file_path, 'r') as file:
+        with open(file_path, 'r', encoding='utf-8') as file:
             translations = json.load(file)
         return mark_safe(translations)
     except FileNotFoundError:

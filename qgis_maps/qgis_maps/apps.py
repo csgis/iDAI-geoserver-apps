@@ -1,6 +1,7 @@
 from django.apps import AppConfig
 from django.conf import settings
 import os
+from django.urls import include, re_path
 
 class QgisMapsConfig(AppConfig):
     default_auto_field = 'django.db.models.BigAutoField'
@@ -19,9 +20,8 @@ def run_setup_hooks(*args, **kwargs):
     """
 
     # Add custom URLs
-    from django.conf.urls import include, url
     from geonode.urls import urlpatterns
     urlpatterns.insert(
         0,
-        url(f"^qgis-maps/", include(f"qgis_maps.urls")),
+        re_path(r"^qgis-maps/", include(f"qgis_maps.urls")),
     )

@@ -34,7 +34,7 @@ log = logging.getLogger("django")
 
 def handle_generic_metadata_detail(view_func):
     def decorator_func(request, *args, **kwargs):
-        # Currently there is only one generic template, this could be extended to  allow
+        # Currently there is only one generic template, this could be extended to allow
         # templates per page
 
         config_obj = get_config_obj(request)

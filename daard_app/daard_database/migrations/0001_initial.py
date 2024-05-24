@@ -4,7 +4,8 @@ from django.conf import settings
 from django.db import migrations, models
 import django.db.models.deletion
 import geoposition.fields
-import jsonfield.fields
+from django.db.models import JSONField
+
 import mptt.fields
 import uuid
 
@@ -69,8 +70,8 @@ class Migration(migrations.Migration):
                 ('age', models.CharField(choices=[('unknown', 'Unknown'), ('does_not_apply', 'Does not apply')], max_length=200)),
                 ('age_freetext', models.CharField(blank=True, max_length=200)),
                 ('sex', models.CharField(choices=[('f', 'F'), ('f?', 'F?'), ('unknown', 'UNKNOWN'), ('m', 'M'), ('m?', 'M?')], max_length=200)),
-                ('inventory', jsonfield.fields.JSONField(default=dict)),
-                ('bone_relations', jsonfield.fields.JSONField(default=dict)),
+                ('inventory', JSONField(default=dict)),
+                ('bone_relations', JSONField(default=dict)),
                 ('reference_images', models.CharField(max_length=600)),
                 ('origin', models.CharField(max_length=400)),
                 ('archaeological_site', models.CharField(max_length=400)),

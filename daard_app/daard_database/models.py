@@ -3,7 +3,7 @@ from mptt.models import MPTTModel, TreeForeignKey, TreeManyToManyField
 from .choices import forms
 from geoposition.fields import GeopositionField
 import uuid
-from jsonfield import JSONField
+from django.db.models import JSONField  # Importing JSONField from Django
 from django.conf import settings
 from .storage import OverwriteStorage
 

@@ -1,4 +1,7 @@
 import re
+from urllib.parse import urlencode
+
+# Middleware currently not in use! extend_info_panel.html is now making a second request to get the metadata
 
 class AppendMetadataMiddleware:
     """
@@ -20,11 +23,17 @@ class AppendMetadataMiddleware:
         """
         path_regex = re.compile(r'^/api/v2/(resources|datasets|maps|documents|geoapps)/\d+/?')
         if path_regex.match(request.path):
-            includes = request.GET.get("include[]")
-            request.GET = request.GET.copy()
-            request.GET["include[]"] = "metadata"
-            if includes:
-                request.GET.appendlist("include[]", includes)
+            # Create a mutable copy of the GET parameters
+            params = request.GET.copy()
+            
+            # Get existing 'include[]' parameters
+            includes = params.getlist("include[]")
+            
+            # Add 'metadata' if it's not already included
+            if "metadata" not in includes:
+                params.appendlist("include[]", "metadata")
+            
+            # Reconstruct the full query string
+            request.META['QUERY_STRING'] = urlencode(params, doseq=True)
 
         return self.get_response(request)
-

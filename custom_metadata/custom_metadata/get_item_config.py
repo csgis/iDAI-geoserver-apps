@@ -73,7 +73,7 @@ def get_type_by_first_url_folder(request):
     :param request: request object
     :return: str
     """
-    match = re.search(r"^https?:\/\/[^\/]+(\/[^\/]+).*$", request.get_raw_uri())
+    match = re.search(r"^https?:\/\/[^\/]+(\/[^\/]+).*$", request.build_absolute_uri())
     # Todo: better raise error instead of fallback
     strategy = match.group(1).split("/")[1] if match else "datasets"
     return strategy
