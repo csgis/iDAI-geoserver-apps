@@ -1,0 +1,163 @@
+{
+    "fields": [
+        {
+            "type": "CharField",
+            "name": "Subtitle",
+            "label": "Subtitle",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "CharField",
+            "name": "Author(s)",
+            "label": "Author(s)",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "ChoiceField",
+            "name": "Data record group",
+            "label": "Data record group:",
+            "choices": [
+                {"value":"none", "label":"None"},
+                {"value":"DAI-Hinkel-Archive", "label":"DAI-Hinkel-Archive"},
+                {"value":"Syrher", "label":"Syrher"}
+            ],
+            "required": false,
+            "widget": "Select"
+        },
+        {
+            "type": "CharField",
+            "name": "Original production date",
+            "label": "Original production date",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "ChoiceField",
+            "name": "Category (dominant)",
+            "label": "Category (dominant):",
+            "choices": [
+                {"value":"Archaeology", "label":"Archaeology"},
+                {"value":"(Archaeo-)Pedology/Botany/Zoology", "label":"(Archaeo-)Pedology/Botany/Zoology"},
+                {"value":"Historical/Political", "label":"Historical/Political"},
+                {"value":"Topography/Hydrology", "label":"Topography/Hydrology"},
+                {"value":"Geology/Geomorphology/Geophysics", "label":"Geology/Geomorphology/Geophysics"},
+                {"value":"Remote Sensing/Aerial Imagery", "label":"Remote Sensing/Aerial Imagery"},
+                {"value":"Navigation/Tourism", "label":"Navigation/Tourism"},
+                {"value":"Cadastre/Infrastructure/Planning", "label":"Cadastre/Infrastructure/Planning"}
+            ],
+            "required": false,
+            "widget": "Select"
+        },
+        {
+            "type": "RadioSelectField",
+            "name": "DaiTags",
+            "label": "Dai-Tags",
+            "required": false,
+            "widget": "RadioSelect",
+            "choices": [
+                {"value":"Contains Hand Written Notes", "label":"Contains Hand Written Notes"},
+                {"value":"Contains AMS Numbers", "label":"Contains AMS Numbers"}
+            ]
+        },
+        {
+            "type": "CharField",
+            "name": "Original author(s)",
+            "label": "Original author(s):",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "CharField",
+            "name": "Original source scale",
+            "label": "Original source scale:",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "CharField",
+            "name": "Original spatial reference system (SRS)",
+            "label": "Original spatial reference system (SRS)",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "CharField",
+            "name": "Geographical coverage",
+            "label": "Geographical coverage",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "ChoiceField",
+            "name": "Accuracy (estimated)",
+            "label": "Accuracy (estimated):",
+            "choices": [
+                {"value":"Centimetres or better", "label":"Centimetres or better"},
+                {"value":"Decimetres", "label":"Decimetres"},
+                {"value":"Metres", "label":"Metres"},
+                {"value":"Hundreds of metres", "label":"Hundreds of metres"},
+                {"value":"Geology/Geomorphology/Geophysics", "label":"Geology/Geomorphology/Geophysics"},
+                {"value":"Kilometres or worse", "label":"Kilometres or worse"},
+                {"value":"Unknown", "label":"Unknown"}
+            ],
+            "required": false,
+            "widget": "Select"
+        },
+        {
+            "type": "CharField",
+            "name": "Version history",
+            "label": "Version history:",
+            "required": false,
+            "widget": "Textarea"
+        },
+        {
+            "type": "CharField",
+            "name": "iDAI.welt signature",
+            "label": "iDAI.welt signature:",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "CharField",
+            "name": "Copyright link (iDAI.objects)",
+            "label": "Copyright link (iDAI.objects):",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "CharField",
+            "name": "Copyright link (iDAI.bibliography):",
+            "label": "Copyright link (iDAI.bibliography)",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "ChoiceField",
+            "name": "Citation",
+            "label": "Citation:",
+            "choices": [
+                {"value":"No citation provided", "label":"No citation provided"},
+                {"value":"Contact author(s) or DAI.", "label":"Contact author(s) or DAI."}
+            ],
+            "required": false,
+            "widget": "Select"
+        },
+        {
+            "type": "CharField",
+            "name": "Citation link (iDAI.objects)",
+            "label": "Citation link (iDAI.objects):",
+            "required": false,
+            "widget": "TextInput"
+        },
+        {
+            "type": "CharField",
+            "name": "Citation link (iDAI.bibliography)",
+            "label": "Citation link (iDAI.bibliography):",
+            "required": false,
+            "widget": "TextInput"
+        }
+
+    ]
+}
